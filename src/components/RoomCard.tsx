@@ -8,16 +8,16 @@ type RoomCardProps = {
 
 export default function RoomCard({ room }: RoomCardProps) {
   return (
-    <div className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 ${!room.available ? 'opacity-60 grayscale-[0.5]' : ''}`}>
+    <div className={`bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ${!room.available ? 'opacity-60 grayscale-[0.5]' : 'hover:shadow-xl'}`}>
       <div className="relative h-48 overflow-hidden">
         <img
           src={room.image_url}
           alt={room.name}
-          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute top-2 right-2">
-          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-            room.available ? 'bg-[#50E3C2] text-white' : 'bg-red-500 text-white'
+          <span className={`px-3 py-1 rounded-full text-xs font-semibold text-white ${
+            room.available ? 'bg-[#50E3C2]' : 'bg-red-500'
           }`}>
             {room.available ? 'Available' : 'Unavailable'}
           </span>
@@ -55,7 +55,7 @@ export default function RoomCard({ room }: RoomCardProps) {
           </Link>
           <Link
             to={room.available ? `/booking?roomId=${room.id}` : '#'}
-            className={`flex-1 text-center px-4 py-2 rounded-lg transition-colors ${
+            className={`flex-1 text-center px-4 py-2 rounded-lg transition-colors font-semibold ${
               room.available 
                 ? 'bg-[#4A90E2] text-white hover:bg-[#3a7bc8]' 
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed pointer-events-none'

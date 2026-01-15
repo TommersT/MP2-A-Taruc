@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth; /* Added for smooth scrolling */
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900;
+    overflow-x: hidden; /* Prevent horizontal layout shift */
+    width: 100%;
+    position: relative;
+  }
+}
+
+/* Fix for shaky scroll effects */
+section {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}

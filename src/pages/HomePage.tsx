@@ -27,18 +27,18 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Section 1: Hero - White Content with Background Image */}
-      <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
+      {/* Hero Section with Image Background */}
+      <section className="relative h-[700px] flex items-center justify-center overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 hover:scale-105"
-          style={{ backgroundImage: "url('https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80')" }}
         >
-          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="absolute inset-0 bg-black opacity-40"></div>
         </div>
         <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Welcome to Tomitel</h1>
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">Welcome to Tomitel</h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto font-light">
-            Experience comfort, convenience, and elegance in our premium hotel rooms. Your perfect stay awaits.
+            Experience luxury and comfort in our premium hotel rooms. Comfort, convenience, and elegance await.
           </p>
           <Link
             to="/rooms"
@@ -49,17 +49,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section 2: Why Choose Us - Light Gray Background */}
-      <section className="bg-gray-50 py-16">
+      {/* Why Choose Us - Increased White Space */}
+      <section className="bg-gray-50 py-32">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Tomitel?</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               We provide exceptional service and amenities to make your stay unforgettable
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8 mb-16">
+          <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center p-6 bg-white rounded-lg shadow-md">
               <div className="bg-[#4A90E2] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Star className="h-8 w-8 text-white" />
@@ -95,10 +95,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section 3: Featured Rooms - White Background */}
-      <section className="bg-white py-16">
+      {/* Featured Rooms - Increased White Space */}
+      <section className="bg-white py-32">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Rooms</h2>
             <p className="text-gray-600">Check out our most popular accommodations</p>
           </div>
@@ -108,7 +108,7 @@ export default function HomePage() {
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4A90E2] mx-auto"></div>
             </div>
           ) : (
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
               {featuredRooms.map((room) => (
                 <RoomCard key={room.id} room={room} />
               ))}
@@ -126,8 +126,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section 4: About - Light Gray Background */}
-      <section className="bg-gray-50 py-16">
+      {/* About - Increased White Space */}
+      <section className="bg-gray-50 py-32">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -175,6 +175,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Updated Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
@@ -208,8 +209,8 @@ export default function HomePage() {
                   <Mail className="h-4 w-4" />
                   <span>info@tomitel.com</span>
                 </li>
-                <li className="flex items-center gap-2 pt-2 text-sm">
-                  <span>Reception: 24/7 | Check-in: 1 PM</span>
+                <li className="pt-2 text-xs opacity-75">
+                  Reception: 24/7 | Check-in: 1:00 PM | Check-out: 12:00 PM
                 </li>
               </ul>
             </div>

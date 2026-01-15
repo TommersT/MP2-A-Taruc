@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { supabase, Room } from '../lib/supabase';
 import RoomCard from '../components/RoomCard';
 import { Filter, MapPin, Phone, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function RoomsPage() {
   const [rooms, setRooms] = useState<Room[]>([]);
@@ -50,8 +50,15 @@ export default function RoomsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <div className="bg-gradient-to-r from-[#4A90E2] to-[#50E3C2] text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* Background Image Header */}
+      <div className="relative py-24 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80')" }}
+        >
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 text-white">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Rooms</h1>
           <p className="text-lg">Discover the perfect accommodation for your stay</p>
         </div>
@@ -128,28 +135,26 @@ export default function RoomsPage() {
         )}
       </div>
 
-      <footer className="bg-gray-900 text-white py-12 mt-12">
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-xl font-bold mb-4">Tomitel Hotel</h3>
-              <p className="text-gray-400">Experience luxury and comfort at its finest.</p>
+              <p className="text-gray-400">Nottingham, Taytay, Rizal</p>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
-                <li><Link to="/rooms" className="text-gray-400 hover:text-white transition-colors">Rooms</Link></li>
-                <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
+                <li><Link to="/rooms" className="hover:text-white transition-colors">Rooms</Link></li>
+                <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Contact Info</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Nottingham, Taytay, Rizal</li>
-                <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +1 234 567 8900</li>
-                <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> info@tomitel.com</li>
-              </ul>
+              <h3 className="text-xl font-bold mb-4">Reception</h3>
+              <p className="text-gray-400">24/7 Service</p>
+              <p className="text-gray-400 text-sm mt-1">Check-in: 1:00 PM | Check-out: 12:00 PM</p>
             </div>
           </div>
         </div>
