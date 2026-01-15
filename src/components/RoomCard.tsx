@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Users, DollarSign } from 'lucide-react';
+import { Users } from 'lucide-react';
 import { Room } from '../lib/supabase';
 
 type RoomCardProps = {
@@ -40,8 +40,8 @@ export default function RoomCard({ room }: RoomCardProps) {
             <span className="text-sm">Up to {room.capacity} guests</span>
           </div>
           <div className="flex items-center text-[#4A90E2] font-bold text-lg">
-            <DollarSign className="h-5 w-5" />
-            <span>{room.price}</span>
+            <span className="mr-1">₱</span>
+            <span>{room.price.toLocaleString()}</span>
             <span className="text-sm text-gray-500 ml-1">/night</span>
           </div>
         </div>

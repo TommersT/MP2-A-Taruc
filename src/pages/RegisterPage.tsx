@@ -18,7 +18,14 @@ export default function RegisterPage() {
     if (formData.password !== formData.confirmPassword) return setError('Passwords do not match');
     setLoading(true);
 
-    const { error: signUpError } = await signUp(formData.email, formData.password, formData.fullName, formData.phone);
+    const { error: signUpError } = await signUp(
+      formData.email, 
+      formData.password, 
+      formData.fullName, 
+      formData.phone,
+      isAdminRegister ? 'admin' : 'user'
+    );
+
     if (signUpError) {
       setError(signUpError.message);
       setLoading(false);
@@ -43,15 +50,14 @@ export default function RegisterPage() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            <input placeholder="Full Name" className="w-full px-4 py-3 border rounded-lg" value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} />
-            <input placeholder="Email" type="email" className="w-full px-4 py-3 border rounded-lg" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
-            <input placeholder="Phone" className="w-full px-4 py-3 border rounded-lg" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
+            <input placeholder="Full Name" className="w-full px-4 py-3 border rounded-lg" value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} required />
+            <input placeholder="Email" type="email" className="w-full px-4 py-3 border rounded-lg" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} required />
+            <input placeholder="Phone" className="w-full px-4 py-3 border rounded-lg" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} required />
             <div className="grid grid-cols-2 gap-4">
-              <input placeholder="Password" type="password" className="w-full px-4 py-3 border rounded-lg" value={formData.password} onChange={e => setFormData({...formData, password: e.target.value})} />
-              <input placeholder="Confirm" type="password" className="w-full px-4 py-3 border rounded-lg" value={formData.confirmPassword} onChange={e => setFormData({...formData, confirmPassword: e.target.value})} />
+              <input placeholder="Password" type="password" className="w-full px-4 py-3 border rounded-lg" value={formData.password} onChange={e => setFormData({...formData, password: e.target.value})} required />
+              <input placeholder="Confirm" type="password" className="w-full px-4 py-3 border rounded-lg" value={formData.confirmPassword} onChange={e => setFormData({...formData, confirmPassword: e.target.value})} required />
             </div>
 
-            {/* ADMIN REGISTRATION OPTION */}
             <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
               <input type="checkbox" id="admin" checked={isAdminRegister} onChange={() => setIsAdminRegister(!isAdminRegister)} />
               <label htmlFor="admin" className="text-sm text-gray-600 flex items-center gap-1 cursor-pointer">Register as Admin <ShieldAlert size={14} /></label>

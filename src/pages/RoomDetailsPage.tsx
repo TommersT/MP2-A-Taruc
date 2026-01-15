@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Users, DollarSign, Check, ArrowLeft } from 'lucide-react';
+import { Users, Check, ArrowLeft } from 'lucide-react';
 import { supabase, Room } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -96,8 +96,8 @@ export default function RoomDetailsPage() {
               </div>
               <div className="text-right">
                 <div className="flex items-center text-[#4A90E2] font-bold text-3xl">
-                  <DollarSign className="h-8 w-8" />
-                  <span>{room.price}</span>
+                  <span className="mr-1">₱</span>
+                  <span>{room.price.toLocaleString()}</span>
                 </div>
                 <span className="text-gray-500">per night</span>
               </div>
@@ -144,7 +144,7 @@ export default function RoomDetailsPage() {
               <div className="bg-gray-50 p-6 rounded-lg">
                 <div className="flex justify-between items-center mb-3">
                   <span className="text-gray-700">Base price per night</span>
-                  <span className="font-semibold">${room.price}</span>
+                  <span className="font-semibold">₱{room.price.toLocaleString()}</span>
                 </div>
                 <div className="border-t pt-3">
                   <p className="text-sm text-gray-600">

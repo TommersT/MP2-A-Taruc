@@ -52,25 +52,16 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#4A90E2]" />
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#4A90E2]" required />
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">Password</label>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#4A90E2]" />
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#4A90E2]" required />
             </div>
             <button disabled={loading} className="w-full bg-[#4A90E2] text-white py-3 rounded-lg font-bold hover:bg-[#3a7bc8] transition-all">
               {loading ? 'Signing In...' : 'Sign In'}
             </button>
           </form>
-
-          {/* DEMO ACCOUNTS SECTION */}
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <h4 className="text-xs font-bold text-gray-400 uppercase mb-3 text-center">Demo Accounts</h4>
-            <div className="text-[11px] font-mono bg-gray-50 p-3 rounded-lg space-y-1">
-              <p className="text-gray-600">User: <span className="text-blue-600 font-bold">user@tomitel.com</span> / user123</p>
-              <p className="text-gray-600">Admin: <span className="text-amber-600 font-bold">admin@tomitel.com</span> / admin123</p>
-            </div>
-          </div>
           
           <p className="text-center mt-6 text-gray-600">Don't have an account? <Link to="/register" className="text-[#4A90E2] font-bold">Register Here</Link></p>
         </div>

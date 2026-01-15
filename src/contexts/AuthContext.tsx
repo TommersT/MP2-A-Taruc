@@ -6,7 +6,7 @@ type AuthContextType = {
   user: User | null;
   profile: Profile | null;
   loading: boolean;
-  signUp: (email: string, password: string, fullName: string, phone: string) => Promise<{ error: any }>;
+  signUp: (email: string, password: string, fullName: string, phone: string, role?: string) => Promise<{ error: any }>;
   signIn: (email: string, password: string) => Promise<{ error: any }>;
   signOut: () => Promise<void>;
   isAdmin: boolean;
@@ -36,6 +36,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           await loadProfile(session.user.id);
         } else {
           setProfile(null);
+          setLoading(false);
         }
       })();
     });
@@ -56,7 +57,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLoading(false);
   };
 
-  const signUp = async (email: string, password: string, fullName: string, phone: string) => {
+  const signUp = async (email: string, password: string, fullName: string, phone: string, role: string = 'user') => {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -70,7 +71,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           email,
           full_name: fullName,
           phone,
-          role: 'user',
+          role: role,
         });
 
       if (profileError) {

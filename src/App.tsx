@@ -14,6 +14,7 @@ import RegisterPage from './pages/RegisterPage';
 import AdminDashboard from './pages/AdminDashboard';
 import ContactPage from './pages/ContactPage';
 import ProfilePage from './pages/ProfilePage';
+import AboutPage from './pages/AboutPage';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
                   <Navbar />
                   <Routes>
                     <Route path="/" element={<HomePage />} />
+                    <Route path="/about" element={<AboutPage />} />
                     <Route path="/rooms" element={<RoomsPage />} />
                     <Route path="/rooms/:id" element={<RoomDetailsPage />} />
                     <Route path="/booking" element={<BookingPage />} />

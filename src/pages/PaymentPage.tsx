@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CreditCard, Wallet, DollarSign, ArrowLeft } from 'lucide-react';
+import { CreditCard, Wallet, ArrowLeft } from 'lucide-react';
 import { useBooking } from '../contexts/BookingContext';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
@@ -134,29 +134,6 @@ export default function PaymentPage() {
                 </button>
 
                 <button
-                  onClick={() => setPaymentMethod('Cash')}
-                  className={`w-full p-6 border-2 rounded-lg text-left transition-all ${
-                    paymentMethod === 'Cash'
-                      ? 'border-[#50E3C2] bg-teal-50'
-                      : 'border-gray-200 hover:border-gray-300'
-                  }`}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                      paymentMethod === 'Cash' ? 'bg-[#50E3C2]' : 'bg-gray-100'
-                    }`}>
-                      <DollarSign className={`h-6 w-6 ${
-                        paymentMethod === 'Cash' ? 'text-white' : 'text-gray-600'
-                      }`} />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">Cash</h3>
-                      <p className="text-sm text-gray-600">Pay at the hotel reception</p>
-                    </div>
-                  </div>
-                </button>
-
-                <button
                   onClick={() => setPaymentMethod('GCash')}
                   className={`w-full p-6 border-2 rounded-lg text-left transition-all ${
                     paymentMethod === 'GCash'
@@ -183,7 +160,7 @@ export default function PaymentPage() {
               <button
                 onClick={handleConfirmPayment}
                 disabled={!paymentMethod || processing}
-                className="w-full mt-8 bg-[#4A90E2] text-white px-6 py-4 rounded-lg text-lg font-semibold hover:bg-[#3a7bc8] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+                className="w-full mt-8 bg-[#4A90E2] text-white px-6 py-4 rounded-lg text-lg font-semibold hover:bg-[#3a7bc8] transition-all disabled:bg-gray-300 disabled:cursor-not-allowed"
               >
                 {processing ? 'Processing...' : 'Confirm Booking & Pay'}
               </button>
@@ -201,32 +178,20 @@ export default function PaymentPage() {
                       <p className="text-gray-600">{bookingData.room.type}</p>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Guest Name</span>
-                      <span className="font-semibold">{bookingData.guestName}</span>
-                    </div>
-                    <div className="flex justify-between">
                       <span className="text-gray-600">Check-in</span>
                       <span className="font-semibold">{new Date(bookingData.checkIn).toLocaleDateString()}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Check-out</span>
-                      <span className="font-semibold">{new Date(bookingData.checkOut).toLocaleDateString()}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Nights</span>
                       <span className="font-semibold">{nights}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Guests</span>
-                      <span className="font-semibold">{bookingData.guests}</span>
-                    </div>
                     <div className="flex justify-between pt-3 border-t">
                       <span className="text-gray-600">Room Rate</span>
-                      <span className="font-semibold">${bookingData.room.price} x {nights}</span>
+                      <span className="font-semibold">₱{bookingData.room.price.toLocaleString()} x {nights}</span>
                     </div>
                     <div className="flex justify-between items-center pt-3 border-t">
                       <span className="font-bold text-gray-900 text-lg">Total Amount</span>
-                      <span className="font-bold text-[#4A90E2] text-2xl">${bookingData.totalCost}</span>
+                      <span className="font-bold text-[#4A90E2] text-2xl">₱{bookingData.totalCost.toLocaleString()}</span>
                     </div>
                   </>
                 )}

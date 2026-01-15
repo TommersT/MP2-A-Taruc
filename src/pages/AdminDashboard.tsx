@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Users, Home, Calendar, DollarSign, CheckCircle, XCircle, Clock } from 'lucide-react';
+import { Users, Home, Calendar, CheckCircle, XCircle, Clock } from 'lucide-react';
 import { supabase, Booking, Room, Profile } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -99,11 +99,11 @@ export default function AdminDashboard() {
           <div className="bg-white p-6 rounded-lg shadow-md">
             <div className="flex items-center justify-between mb-4">
               <div className="bg-[#50E3C2] rounded-full p-3">
-                <DollarSign className="h-6 w-6 text-white" />
+                <span className="text-white text-xl font-bold">₱</span>
               </div>
             </div>
             <p className="text-gray-600 text-sm mb-1">Total Revenue</p>
-            <p className="text-3xl font-bold text-gray-900">${stats.totalRevenue}</p>
+            <p className="text-3xl font-bold text-gray-900">₱{stats.totalRevenue.toLocaleString()}</p>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -212,7 +212,7 @@ export default function AdminDashboard() {
                           <p className="text-sm text-gray-600">{booking.rooms?.name}</p>
                         </div>
                         <div className="text-right">
-                          <p className="font-semibold">${booking.total_cost}</p>
+                          <p className="font-semibold">₱{booking.total_cost.toLocaleString()}</p>
                           <span className={`text-xs px-2 py-1 rounded-full ${
                             booking.status === 'confirmed' ? 'bg-[#50E3C2] text-white' :
                             booking.status === 'pending' ? 'bg-[#F5A623] text-white' :
@@ -235,8 +235,6 @@ export default function AdminDashboard() {
                     <tr>
                       <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Reference</th>
                       <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Guest</th>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Room</th>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Check-in</th>
                       <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Total</th>
                       <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Status</th>
                       <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Actions</th>
@@ -247,9 +245,7 @@ export default function AdminDashboard() {
                       <tr key={booking.id} className="hover:bg-gray-50">
                         <td className="px-4 py-3 text-sm">{booking.booking_reference}</td>
                         <td className="px-4 py-3 text-sm">{booking.guest_name}</td>
-                        <td className="px-4 py-3 text-sm">{booking.rooms?.name}</td>
-                        <td className="px-4 py-3 text-sm">{new Date(booking.check_in).toLocaleDateString()}</td>
-                        <td className="px-4 py-3 text-sm font-semibold">${booking.total_cost}</td>
+                        <td className="px-4 py-3 text-sm font-semibold">₱{booking.total_cost.toLocaleString()}</td>
                         <td className="px-4 py-3 text-sm">
                           <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                             booking.status === 'confirmed' ? 'bg-[#50E3C2] text-white' :
@@ -297,7 +293,7 @@ export default function AdminDashboard() {
                       <div className="flex-1">
                         <h3 className="font-semibold text-lg mb-1">{room.name}</h3>
                         <p className="text-sm text-gray-600 mb-2">{room.type}</p>
-                        <p className="text-[#4A90E2] font-bold mb-2">${room.price}/night</p>
+                        <p className="text-[#4A90E2] font-bold mb-2">₱{room.price.toLocaleString()}/night</p>
                         <div className="flex items-center gap-2">
                           <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                             room.available ? 'bg-[#50E3C2] text-white' : 'bg-[#7B7B7B] text-white'
@@ -325,9 +321,7 @@ export default function AdminDashboard() {
                     <tr>
                       <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Name</th>
                       <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Email</th>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Phone</th>
                       <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Role</th>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Joined</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -335,7 +329,6 @@ export default function AdminDashboard() {
                       <tr key={user.id} className="hover:bg-gray-50">
                         <td className="px-4 py-3 text-sm">{user.full_name || 'N/A'}</td>
                         <td className="px-4 py-3 text-sm">{user.email}</td>
-                        <td className="px-4 py-3 text-sm">{user.phone || 'N/A'}</td>
                         <td className="px-4 py-3 text-sm">
                           <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                             user.role === 'admin' ? 'bg-[#F5A623] text-white' : 'bg-gray-200 text-gray-700'
@@ -343,7 +336,6 @@ export default function AdminDashboard() {
                             {user.role}
                           </span>
                         </td>
-                        <td className="px-4 py-3 text-sm">{new Date(user.created_at).toLocaleDateString()}</td>
                       </tr>
                     ))}
                   </tbody>
