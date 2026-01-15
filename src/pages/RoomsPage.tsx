@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { supabase, Room } from '../lib/supabase';
 import RoomCard from '../components/RoomCard';
-import { Filter } from 'lucide-react';
+import { Filter, MapPin, Phone, Mail } from 'lucide-react';
 
 export default function RoomsPage() {
   const [rooms, setRooms] = useState<Room[]>([]);
@@ -48,7 +49,7 @@ export default function RoomsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <div className="bg-gradient-to-r from-[#4A90E2] to-[#50E3C2] text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Rooms</h1>
@@ -56,7 +57,7 @@ export default function RoomsPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-8 flex-grow">
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <div className="flex items-center gap-2 mb-4">
             <Filter className="h-5 w-5 text-[#4A90E2]" />
@@ -126,6 +127,33 @@ export default function RoomsPage() {
           </div>
         )}
       </div>
+
+      <footer className="bg-gray-900 text-white py-12 mt-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Tomitel Hotel</h3>
+              <p className="text-gray-400">Experience luxury and comfort at its finest.</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+              <ul className="space-y-2">
+                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
+                <li><Link to="/rooms" className="text-gray-400 hover:text-white transition-colors">Rooms</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Contact Info</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Nottingham, Taytay, Rizal</li>
+                <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +1 234 567 8900</li>
+                <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> info@tomitel.com</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

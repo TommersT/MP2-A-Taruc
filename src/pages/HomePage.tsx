@@ -26,66 +26,76 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <section className="relative h-[600px] bg-gradient-to-br from-[#4A90E2] via-[#50E3C2] to-[#F5A623] flex items-center justify-center">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+    <div className="min-h-screen bg-white">
+      {/* Section 1: Hero - White Content with Background Image */}
+      <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 hover:scale-105"
+          style={{ backgroundImage: "url('https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}
+        >
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+        </div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-4">Welcome to Tomitel</h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-            Experience luxury and comfort in our premium hotel rooms. Your perfect stay awaits.
+          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto font-light">
+            Experience comfort, convenience, and elegance in our premium hotel rooms. Your perfect stay awaits.
           </p>
           <Link
             to="/rooms"
-            className="inline-block bg-white text-[#4A90E2] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-[#4A90E2] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all transform hover:-translate-y-1"
           >
             Explore Rooms
           </Link>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Tomitel?</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            We provide exceptional service and amenities to make your stay unforgettable
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-4 gap-8 mb-16">
-          <div className="text-center p-6 bg-white rounded-lg shadow-md">
-            <div className="bg-[#4A90E2] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Star className="h-8 w-8 text-white" />
-            </div>
-            <h3 className="text-lg font-semibold mb-2">Premium Quality</h3>
-            <p className="text-gray-600 text-sm">Top-rated rooms with luxury amenities</p>
+      {/* Section 2: Why Choose Us - Light Gray Background */}
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Tomitel?</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              We provide exceptional service and amenities to make your stay unforgettable
+            </p>
           </div>
 
-          <div className="text-center p-6 bg-white rounded-lg shadow-md">
-            <div className="bg-[#50E3C2] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Wifi className="h-8 w-8 text-white" />
+          <div className="grid md:grid-cols-4 gap-8 mb-16">
+            <div className="text-center p-6 bg-white rounded-lg shadow-md">
+              <div className="bg-[#4A90E2] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Star className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Premium Quality</h3>
+              <p className="text-gray-600 text-sm">Top-rated rooms with luxury amenities</p>
             </div>
-            <h3 className="text-lg font-semibold mb-2">Free Wi-Fi</h3>
-            <p className="text-gray-600 text-sm">High-speed internet in all rooms</p>
-          </div>
 
-          <div className="text-center p-6 bg-white rounded-lg shadow-md">
-            <div className="bg-[#F5A623] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Coffee className="h-8 w-8 text-white" />
+            <div className="text-center p-6 bg-white rounded-lg shadow-md">
+              <div className="bg-[#50E3C2] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Wifi className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Free Wi-Fi</h3>
+              <p className="text-gray-600 text-sm">High-speed internet in all rooms</p>
             </div>
-            <h3 className="text-lg font-semibold mb-2">Breakfast Included</h3>
-            <p className="text-gray-600 text-sm">Complimentary breakfast buffet</p>
-          </div>
 
-          <div className="text-center p-6 bg-white rounded-lg shadow-md">
-            <div className="bg-[#7B7B7B] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Shield className="h-8 w-8 text-white" />
+            <div className="text-center p-6 bg-white rounded-lg shadow-md">
+              <div className="bg-[#F5A623] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Coffee className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Breakfast Included</h3>
+              <p className="text-gray-600 text-sm">Complimentary breakfast buffet</p>
             </div>
-            <h3 className="text-lg font-semibold mb-2">24/7 Security</h3>
-            <p className="text-gray-600 text-sm">Safe and secure environment</p>
+
+            <div className="text-center p-6 bg-white rounded-lg shadow-md">
+              <div className="bg-[#7B7B7B] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">24/7 Security</h3>
+              <p className="text-gray-600 text-sm">Safe and secure environment</p>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Section 3: Featured Rooms - White Background */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -116,6 +126,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Section 4: About - Light Gray Background */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -123,7 +134,7 @@ export default function HomePage() {
               <h2 className="text-4xl font-bold text-gray-900 mb-6">About Tomitel</h2>
               <p className="text-gray-600 mb-4 leading-relaxed">
                 Tomitel is a premier hotel offering world-class accommodations and exceptional service.
-                Located in the heart of the city, we provide easy access to major attractions while
+                Located in Nottingham, Taytay, Rizal, we provide easy access to major attractions while
                 maintaining a peaceful retreat atmosphere.
               </p>
               <p className="text-gray-600 mb-6 leading-relaxed">
@@ -187,7 +198,7 @@ export default function HomePage() {
               <ul className="space-y-2 text-gray-400">
                 <li className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" />
-                  <span>123 Hotel Street, City</span>
+                  <span>Nottingham, Taytay, Rizal</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone className="h-4 w-4" />
@@ -196,6 +207,9 @@ export default function HomePage() {
                 <li className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
                   <span>info@tomitel.com</span>
+                </li>
+                <li className="flex items-center gap-2 pt-2 text-sm">
+                  <span>Reception: 24/7 | Check-in: 1 PM</span>
                 </li>
               </ul>
             </div>
