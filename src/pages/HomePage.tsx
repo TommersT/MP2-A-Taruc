@@ -27,7 +27,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section with Image Background */}
       <section className="relative h-[700px] flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center transition-transform duration-1000"
@@ -49,7 +48,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Choose Us - Increased White Space */}
       <section className="bg-gray-50 py-32">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -95,7 +93,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Rooms - Increased White Space */}
       <section className="bg-white py-32">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -126,7 +123,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About - Increased White Space */}
       <section className="bg-gray-50 py-32">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -175,7 +171,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Updated Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
