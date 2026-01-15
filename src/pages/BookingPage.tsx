@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Calendar, Users, DollarSign } from 'lucide-react';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
+import { Calendar, Users, DollarSign, MapPin, Phone, Mail } from 'lucide-react';
 import { supabase, Room } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import { useBooking } from '../contexts/BookingContext';
@@ -117,8 +117,9 @@ export default function BookingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Main Content with increased vertical padding (py-20) */}
+      <div className="max-w-4xl mx-auto px-4 py-20 flex-grow w-full">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">Book Your Stay</h1>
 
         <div className="bg-white rounded-lg shadow-md p-8">
@@ -141,7 +142,7 @@ export default function BookingPage() {
                 <option value="">Choose a room...</option>
                 {rooms.map((room) => (
                   <option key={room.id} value={room.id}>
-                    {room.name} - {room.type} (${room.price}/night)
+                    {room.name} - {room.type} (₱{room.price.toLocaleString()}/night)
                   </option>
                 ))}
               </select>
@@ -217,7 +218,7 @@ export default function BookingPage() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Price per night</span>
-                    <span className="font-semibold">${selectedRoom.price}</span>
+                    <span className="font-semibold">₱{selectedRoom.price.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Number of nights</span>
@@ -230,8 +231,8 @@ export default function BookingPage() {
                   <div className="border-t pt-3 flex justify-between items-center">
                     <span className="text-lg font-bold text-gray-900">Total Cost</span>
                     <div className="flex items-center text-[#4A90E2] font-bold text-2xl">
-                      <DollarSign className="h-6 w-6" />
-                      <span>{total}</span>
+                      <span className="mr-1">₱</span>
+                      <span>{total.toLocaleString()}</span>
                     </div>
                   </div>
                 </div>
@@ -248,6 +249,52 @@ export default function BookingPage() {
           </div>
         </div>
       </div>
+
+      {/* Standardized Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Tomitel Hotel</h3>
+              <p className="text-gray-400">
+                Experience luxury and comfort at its finest. Your perfect stay begins here.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+              <ul className="space-y-2">
+                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
+                <li><Link to="/rooms" className="text-gray-400 hover:text-white transition-colors">Rooms</Link></li>
+                <li><Link to="/booking" className="text-gray-400 hover:text-white transition-colors">Booking</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Contact Info</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>Nottingham, Taytay, Rizal</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Phone className="h-4 w-4" />
+                  <span>+1 234 567 8900</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail className="h-4 w-4" />
+                  <span>info@tomitel.com</span>
+                </li>
+                <li className="pt-2 text-xs opacity-75">
+                  Reception: 24/7 | Check-in: 1:00 PM | Check-out: 12:00 PM
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2026 Tomitel Hotel. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

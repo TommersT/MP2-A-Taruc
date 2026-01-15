@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Header Section with Hospitality Image */}
+      {/* Header Section with Hospitality Image - Centered Text */}
       <div className="relative py-24">
         <div className="absolute inset-0 z-0">
           <img 
@@ -14,17 +14,17 @@ export default function ContactPage() {
           />
           <div className="absolute inset-0 bg-black opacity-60"></div>
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 text-white">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 text-white text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-lg">We're here to help and answer any questions you may have</p>
+          <p className="text-lg max-w-2xl mx-auto">We're here to help and answer any questions you may have</p>
         </div>
       </div>
 
-      {/* Main Content - Expanded width to reduce white space */}
+      {/* Main Content */}
       <div className="max-w-screen-2xl mx-auto w-full px-8 md:px-16 py-20 flex-grow">
         <div className="grid md:grid-cols-5 gap-16 items-start">
           
-          {/* Get in Touch Section - Left side (2/5 width) */}
+          {/* Get in Touch Section */}
           <div className="md:col-span-2 space-y-10">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">Get in Touch</h2>
@@ -78,7 +78,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Send Us a Message Card - Right side (3/5 width) */}
+          {/* Send Us a Message Card */}
           <div className="md:col-span-3 bg-white rounded-2xl shadow-xl p-12 border border-gray-100">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Send Us a Message</h2>
             <form className="space-y-8">
@@ -119,23 +119,47 @@ export default function ContactPage() {
       </div>
 
       {/* Standardized Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-12 text-center md:text-left">
-          <div>
-            <h3 className="text-2xl font-bold mb-6">Tomitel Hotel</h3>
-            <p className="text-gray-400 text-lg">Nottingham, Taytay, Rizal</p>
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Tomitel Hotel</h3>
+              <p className="text-gray-400">
+                Experience luxury and comfort at its finest. Your perfect stay begins here.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+              <ul className="space-y-2">
+                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
+                <li><Link to="/rooms" className="text-gray-400 hover:text-white transition-colors">Rooms</Link></li>
+                <li><Link to="/booking" className="text-gray-400 hover:text-white transition-colors">Booking</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Contact Info</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li className="flex items-center justify-center md:justify-start gap-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>Nottingham, Taytay, Rizal</span>
+                </li>
+                <li className="flex items-center justify-center md:justify-start gap-2">
+                  <Phone className="h-4 w-4" />
+                  <span>+1 234 567 8900</span>
+                </li>
+                <li className="flex items-center justify-center md:justify-start gap-2">
+                  <Mail className="h-4 w-4" />
+                  <span>info@tomitel.com</span>
+                </li>
+                <li className="pt-2 text-xs opacity-75">
+                  Reception: 24/7 | Check-in: 1:00 PM | Check-out: 12:00 PM
+                </li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <h3 className="text-2xl font-bold mb-6">Quick Links</h3>
-            <ul className="space-y-3 text-gray-400 text-lg">
-              <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
-              <li><Link to="/rooms" className="hover:text-white transition-colors">Rooms</Link></li>
-              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold mb-6">Hours</h3>
-            <p className="text-gray-400 text-lg">Reception: 24/7 Service</p>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2026 Tomitel Hotel. All rights reserved.</p>
           </div>
         </div>
       </footer>

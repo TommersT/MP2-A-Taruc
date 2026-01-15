@@ -50,7 +50,7 @@ export default function RoomsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Background Image Header */}
+      {/* Background Image Header - Centered Text */}
       <div className="relative py-24 overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
@@ -58,13 +58,14 @@ export default function RoomsPage() {
         >
           <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 text-white">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 text-white text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Rooms</h1>
-          <p className="text-lg">Discover the perfect accommodation for your stay</p>
+          <p className="text-lg max-w-2xl mx-auto">Discover the perfect accommodation for your stay</p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8 flex-grow">
+      <div className="max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
+        {/* Filter Section */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <div className="flex items-center gap-2 mb-4">
             <Filter className="h-5 w-5 text-[#4A90E2]" />
@@ -135,27 +136,48 @@ export default function RoomsPage() {
         )}
       </div>
 
-      {/* Footer */}
+      {/* Standardized Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
               <h3 className="text-xl font-bold mb-4">Tomitel Hotel</h3>
-              <p className="text-gray-400">Nottingham, Taytay, Rizal</p>
+              <p className="text-gray-400">
+                Experience luxury and comfort at its finest. Your perfect stay begins here.
+              </p>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
-                <li><Link to="/rooms" className="hover:text-white transition-colors">Rooms</Link></li>
-                <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              <ul className="space-y-2">
+                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
+                <li><Link to="/rooms" className="text-gray-400 hover:text-white transition-colors">Rooms</Link></li>
+                <li><Link to="/booking" className="text-gray-400 hover:text-white transition-colors">Booking</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Reception</h3>
-              <p className="text-gray-400">24/7 Service</p>
-              <p className="text-gray-400 text-sm mt-1">Check-in: 1:00 PM | Check-out: 12:00 PM</p>
+              <h3 className="text-xl font-bold mb-4">Contact Info</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li className="flex items-center justify-center md:justify-start gap-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>Nottingham, Taytay, Rizal</span>
+                </li>
+                <li className="flex items-center justify-center md:justify-start gap-2">
+                  <Phone className="h-4 w-4" />
+                  <span>+1 234 567 8900</span>
+                </li>
+                <li className="flex items-center justify-center md:justify-start gap-2">
+                  <Mail className="h-4 w-4" />
+                  <span>info@tomitel.com</span>
+                </li>
+                <li className="pt-2 text-xs opacity-75">
+                  Reception: 24/7 | Check-in: 1:00 PM | Check-out: 12:00 PM
+                </li>
+              </ul>
             </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2026 Tomitel Hotel. All rights reserved.</p>
           </div>
         </div>
       </footer>

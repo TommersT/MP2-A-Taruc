@@ -1,4 +1,5 @@
-import { Hotel, ShieldCheck, MapPin, Clock } from 'lucide-react';
+import { Hotel, ShieldCheck, MapPin, Clock, Phone, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function AboutPage() {
   return (
@@ -17,7 +18,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 py-16 space-y-16">
+      <div className="max-w-5xl mx-auto px-4 py-16 space-y-16 flex-grow">
         <section className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
@@ -68,6 +69,52 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
+
+      {/* Updated Footer to match HomePage */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">Tomitel Hotel</h3>
+              <p className="text-gray-400">
+                Experience luxury and comfort at its finest. Your perfect stay begins here.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+              <ul className="space-y-2">
+                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
+                <li><Link to="/rooms" className="text-gray-400 hover:text-white transition-colors">Rooms</Link></li>
+                <li><Link to="/booking" className="text-gray-400 hover:text-white transition-colors">Booking</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Contact Info</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>Nottingham, Taytay, Rizal</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Phone className="h-4 w-4" />
+                  <span>+1 234 567 8900</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail className="h-4 w-4" />
+                  <span>info@tomitel.com</span>
+                </li>
+                <li className="pt-2 text-xs opacity-75">
+                  Reception: 24/7 | Check-in: 1:00 PM | Check-out: 12:00 PM
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2026 Tomitel Hotel. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
